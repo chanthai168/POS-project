@@ -5,10 +5,13 @@
   --secondary-color: #f89738;
   --grey-color: #c0c0c0;
   --white-color: #ffffff;
+  --soft-white:#F9F8F6;
+  --almost-black:#202020;
 }
 
 * {
   box-sizing: border-box;
+    scrollbar-width:none;
 }
 
 body {
@@ -16,109 +19,123 @@ body {
   font-family: "Quicksand", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #474e4b;
-  color: #e1eeeb;
+  color: #1d1d1d;
   min-height: 100vh;
+  
+}
+.app-background{
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(135deg, 
+    #E9E8E8 0%, 
+    #d1cfcf 60%, 
+    #C3C5C3 95%, 
+    #b7b5b5 100%
+  );
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: -1;
 }
 
-/*  ----------  HEADDER --------------------- */
-
-#header {
-  text-align: center;
-  margin: 3rem auto;
-}
-
-#header img {
-  width: 5rem;
-  height: 5rem;
-  object-fit: contain;
-  background-color: transparent;
-}
-
-#header h1 {
-  font-size: 1.5rem;
-}
-
-/*  ----------  SCORES CONTAINER --------------------- */
-
-.scores-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding-top: 20px;
-}
-
-@media (min-width: 600px) {
-  .scores-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 912px) {
-  .scores-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .scores-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .scores-container {
-    grid-template-columns: repeat(4, 1fr);
-
-    max-width: 1100px;
-    margin: auto;
-  }
-}
-
-/*  ----------  SCORES CARDS --------------------- */
-
-.scores {
-  border: 1px solid var(--main-color);
-  border-radius: 15px;
-  margin: 1rem auto;
-  padding: 0.3rem;
-}
-
-.scores h1 {
-  font-size: 1.5rem;
-  text-align: center;
-  color: var(--white-color);
-}
-
-.scores table {
-  table-layout: fixed;
-  border-spacing: 0.5rem;
-  text-align: right;
-}
-
-.scores thead {
-  font-size: 1rem;
-  color: var(--white-color);
-}
-
-.scores tbody {
-  font-size: 1rem;
-  color: var(--grey-color);
-}
-
-.warning {
-  color: var(--secondary-color);
-}
-
-/*  ----------  statistic --------------------- */
-
-.statistic{
-  background-color: rgb(9, 205, 235);
-  color:rgb(14, 14, 14);
+/*        Header      */
+nav{
   display: flex;
-  gap:10px;
+  justify-content: space-between;
+  align-items: center;
+  gap:2vw;
+  padding:0 2vw;
+  height: 48px;
+  width:min(1920px,100vw);
+  margin-top: 18px;
+}
+nav a{
+  color:black;
+  text-decoration: none;
+  
+}
+.logo{
+  display: flex;
+  align-items: center;
+  gap:1vw;
+
+}
+.links{
+  display: flex;
+  gap:2vw;
+  align-items: center;
+  height: 100%;
+  
+}
+
+.mainLinks{
+  display: flex;
+  gap:2vw;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: var(--soft-white);
+  border-radius: 40px;
+  padding:2.8px;
+  border:1px solid white;
+}
+.mainLinks a{
+  padding:0 1.2vw;
+  height: 100%;
+  border-radius: 40px;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:0.3s ease;
+}
+.mainLinks a:hover:not(.active){
+  background-color: rgb(221, 218, 218);
+}
+.active{
+  background-color: var(--almost-black);
+  color:white;
+
+}
+.secondaryLinks{
+  display: flex;
+  gap:1vw;
+  align-items: center;
+  height: 100%;
+
+}
+.secondaryLinks a{
+  background-color: var(--soft-white);
+  height: 48px;
+  width: 48px;
+  color:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border:1px solid white;
+}
+.profile-picture{
+  margin-left:2vw;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap:1vw;
+}
+.profile-picture .name-title p{
+  margin:0;
+}
+.profile-picture .name-title{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:100%;
+  padding:1px 0;
+}
+.profile-picture .name-title>:first-child{
+  background-color: var(--soft-white);
+  color:tomato;
+  font-size: 12px;
+  text-align: center;
   border-radius: 10px;
-  padding:4px;
-  font-weight: bold;
 }
 

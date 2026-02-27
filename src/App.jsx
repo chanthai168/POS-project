@@ -1,18 +1,24 @@
-import pnLogo from "./assets/pn-logo.png";
-import Header from "./components/Header";
-import Scores from "./components/Scores";
-import { JAVA_RESULTS,ENGLISH_RESULTS,HTML_RESULTS,PYTHON_RESULTS } from "./data";
+
+import { Routes,Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Order from "./pages/Order";
+import Nav from "./components/sementic/Nav";
 
 function App() {
   return (
     <>
-    <Header id="header" batchName={"fake batch name"}/>
-    <main className="scores-container">
-      <Scores  course_name={"DevOP"} list_results={JAVA_RESULTS}/>
-      <Scores  course_name={"Advance English"} list_results={ENGLISH_RESULTS}/>
-      <Scores  course_name={"Advance HTLM"} list_results={HTML_RESULTS}/>
-      <Scores  course_name={"AI Engineer"} list_results={PYTHON_RESULTS}/>
+    <div className="app-background"></div>
+    <Nav/>
+
+    <main>
+      <h1>Hello, This is App component</h1>
+
+      <Routes>
+        <Route path="/" element={<Dashboard/>}></Route>
+        <Route path="/order" element={<Order/>}></Route>
+      </Routes>
     </main>
+
     </>
   );
 }
