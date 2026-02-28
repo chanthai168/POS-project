@@ -54,6 +54,7 @@ nav a{
   text-decoration: none;
   
 }
+
 .logo{
   display: flex;
   align-items: center;
@@ -69,6 +70,7 @@ nav a{
 }
 
 .mainLinks{
+  position: relative;
   display: flex;
   gap:2vw;
   align-items: center;
@@ -79,8 +81,9 @@ nav a{
   padding:2.8px;
   border:1px solid white;
 }
+
 .mainLinks a{
-  padding:0 1.2vw;
+  padding:0 1.6vw;
   height: 100%;
   border-radius: 40px;
     display: flex;
@@ -88,21 +91,19 @@ nav a{
   align-items: center;
   transition:0.3s ease;
 }
+
 .mainLinks a:hover:not(.active){
   background-color: rgb(221, 218, 218);
 }
-.active{
-  background-color: var(--almost-black);
-  color:white;
 
-}
 .secondaryLinks{
   display: flex;
   gap:1vw;
   align-items: center;
   height: 100%;
-
+  
 }
+
 .secondaryLinks a{
   background-color: var(--soft-white);
   height: 48px;
@@ -113,17 +114,30 @@ nav a{
   align-items: center;
   border-radius: 50%;
   border:1px solid white;
+  transition:0.3s ease;
 }
+
+.secondaryLinks a:hover:not(.active){
+  background-color: rgb(221, 218, 218);
+}
+
+.secondaryLinks a.active{
+  background-color: var(--almost-black) !important;
+  color:rgb(219, 217, 217) !important;
+}
+
 .profile-picture{
   margin-left:2vw;
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 48px;
   gap:1vw;
 }
+
 .profile-picture .name-title p{
   margin:0;
 }
+
 .profile-picture .name-title{
   display: flex;
   flex-direction: column;
@@ -131,6 +145,7 @@ nav a{
   height:100%;
   padding:1px 0;
 }
+
 .profile-picture .name-title>:first-child{
   background-color: var(--soft-white);
   color:tomato;
@@ -139,3 +154,140 @@ nav a{
   border-radius: 10px;
 }
 
+.navbar {
+  position: relative;
+  display: flex;
+  background: var(--soft-white);
+  padding: 5px;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.nav-link {
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  color: #050505;
+  padding: 12px 25px;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  top: 5px;
+  height: calc(100% - 10px);
+  background-color: black;
+  border-radius: 40px;
+  transition: all 0.3s ease-out;
+  z-index: 0;
+}
+
+.nav-link.active {
+  color: rgb(229, 227, 227);
+}
+
+
+/* implement NavBar for smaller screen */
+.hambuger-menu{
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  position:relative;
+  margin-top: 20px;
+}
+
+.hambuger-menu button{
+  display: flex;
+  flex-direction: column;
+  gap:4px;
+  background-color: transparent;
+  border:none;
+  margin-right: 4vw;
+  z-index: 20;
+}
+.hambuger-bar{
+  display: block;
+  width:20px;
+  height:3.2px ;
+  position:relative;
+  background-color: black;
+  transition:rotate 0.3s ease;
+  border-radius: 10px;
+
+}
+.hambuger-bar::after{
+  position:absolute;
+  content: "";
+  width:19px;
+  height: 3.2px;
+  background-color: var(--almost-black);
+  top:0;
+  border-radius: 10px;
+}
+
+.options{
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+  background-color:var(--soft-white);
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  width:96%;
+  transition: 0.3s ease;
+  position:absolute;
+  top:-16px;
+  transition:0.3s ease;
+  border-radius: 20px;
+}
+
+.options>:first-child{
+  margin-top: 40px;
+}
+.options a{
+  font-size: 18px;
+  font-weight: 500;
+  color:black;
+  text-decoration: none;
+}
+
+@media (max-width:1000px) {
+  .options{
+    width:80%;
+    margin-right: 2vw;
+  }
+  .hambuger-menu{
+    display: flex;
+  }
+  .secondaryLinks{
+    display: none;
+  }
+}
+@media (max-width:690px) {
+  
+  .profile-picture .name-title>:first-child{
+    background-color: rgb(245, 236, 236);
+  }
+  .options{
+    top:-20px !important;
+    width:100%;
+    border-radius: 0;
+    margin-right: 0;
+  }
+  .mainLinks{
+    display: none;
+  }
+  nav{
+  .options{
+    top:-22px;
+  }
+    background-color: var(--soft-white);
+    margin-top: 0;
+    height: 60px;
+  }
+}
