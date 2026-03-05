@@ -1,0 +1,5 @@
+
+{
+  "tailwindCSS.experimental.configFile": "src/index.css"
+  // or "src/app.css", "src/styles/globals.css", "src/main.css" — whatever your entry file is
+}

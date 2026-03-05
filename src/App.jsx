@@ -3,6 +3,7 @@ import { Routes,Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Order from "./pages/Order";
 import Nav from "./components/sementic/Nav";
+import Setting from "./pages/setting/Setting";
 
 function App() {
   return (
@@ -11,11 +12,10 @@ function App() {
     <Nav/>
 
     <main>
-      <h1>Hello, This is App component</h1>
-
       <Routes>
         <Route path="/" element={<Dashboard/>}></Route>
         <Route path="/order" element={<Order/>}></Route>
+        <Route path="/setting" element={<Setting/>}></Route>
       </Routes>
     </main>
 
