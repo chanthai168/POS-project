@@ -36,7 +36,6 @@ function Nav(){
 
                 <div className="secondaryLinks ">
                     <NavLink to="setting">{settingIcon}</NavLink>
-                    <NavLink to="Language">{languageIcon}</NavLink>
                     <NavLink to="Notification">{bellIcon}</NavLink>
                 </div>
 

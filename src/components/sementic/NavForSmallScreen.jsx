@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const angleBracket = <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 20 20"><g fill="currentColor"><path fillRule="evenodd" d="m11.453 11l4.2-5.04c1.28-1.536-1.025-3.457-2.305-1.92L8.39 9.988c-.256.272-.42.63-.418 1.012c-.002.382.162.74.418 1.012l4.957 5.948c1.28 1.537 3.585-.384 2.304-1.92z" clipRule="evenodd" opacity={0.2}></path><path d="m12.384 15.68l-5-6l-.768.64l5 6z"></path><path d="m11.616 16.32l-5-6c-.427-.512.341-1.152.768-.64l5 6c.427.512-.341 1.152-.768.64"></path><path d="m11.616 3.68l-5 6l.768.64l5-6z"></path><path d="m12.384 4.32l-5 6c-.427.512-1.195-.128-.768-.64l5-6c.427-.512 1.195.128.768.64"></path></g></svg>;
+const angleBracket = <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M6.75 2.5A4.25 4.25 0 0 1 11 6.75V11H6.75a4.25 4.25 0 0 1 0-8.5M9 9V6.75A2.25 2.25 0 1 0 6.75 9zm-2.25 4H11v4.25A4.25 4.25 0 1 1 6.75 13m0 2A2.25 2.25 0 1 0 9 17.25V15zm10.5-12.5a4.25 4.25 0 0 1 0 8.5H13V6.75a4.25 4.25 0 0 1 4.25-4.25m0 6.5A2.25 2.25 0 1 0 15 6.75V9zM13 13h4.25A4.25 4.25 0 1 1 13 17.25zm2 2v2.25A2.25 2.25 0 1 0 17.25 15z"></path></svg>
+const rightAngleBracket = <svg xmlns="http://www.w3.org/2000/svg" width={20} height={22} viewBox="0 0 320 512"><path fill="currentColor" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256L73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>;
 
 
 function NavForSmallScreen(){
@@ -17,7 +18,7 @@ function NavForSmallScreen(){
 
     useEffect(()=>{
         if(isHambugerClick){
-            setHeightDropdown({height:"380px"});
+            setHeightDropdown({height:"340px"});
             setRotateDegree("90");
         }
         else{
@@ -40,16 +41,72 @@ function NavForSmallScreen(){
                 <span className="hambuger-bar" style={{rotate:`${rotateDegree}deg`}}> {angleBracket}</span> 
                 
             </button>
-
+            
             <div className={isHambugerClick ? "options activate-animation":"options"} style={heightDropdown} >
-                <NavLink to="/"         onClick={handleClick}>Dashboard</NavLink>
-                <NavLink to="/order"    onClick={handleClick}>Order</NavLink>
-                <NavLink to="/table"    onClick={handleClick}>Table</NavLink>
-                <NavLink to="/pos"      onClick={handleClick}>POS</NavLink>
-                <NavLink to="/setting"         onClick={handleClick}>Setting</NavLink>
-                <NavLink to="/notification"    onClick={handleClick}>Notification</NavLink>
-                <NavLink to="#"         onClick={handleClick}>Languages</NavLink>
+                
+                    <NavLink to="/"         onClick={handleClick}>
+                        <div className="group flex w-10/12 justify-between cursor-pointer">
+                            <p>Dashboard</p>
+                            {/* Notice the 'group-hover' modifier below */}
+                            <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                                {rightAngleBracket}
+                            </p>
+                        </div>
+                    </NavLink>
+
+                    <NavLink to="/order"    onClick={handleClick}>
+                        <div className="group flex w-10/12 justify-between cursor-pointer">
+                            <p>Order</p>
+                            {/* Notice the 'group-hover' modifier below */}
+                            <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                                {rightAngleBracket}
+                            </p>
+                        </div>
+                    </NavLink>
+
+                    <NavLink to="/table"    onClick={handleClick}>
+                        <div className="group flex w-10/12 justify-between cursor-pointer">
+                            <p>Table</p>
+                            {/* Notice the 'group-hover' modifier below */}
+                            <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                                {rightAngleBracket}
+                            </p>
+                        </div>
+                    </NavLink>
+
+                    <NavLink to="/pos"      onClick={handleClick}>
+                        <div className="group flex w-10/12 justify-between cursor-pointer">
+                        <p>POS</p>
+                        
+                        {/* The arrow starts translated -10px and invisible */}
+                        <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                            {rightAngleBracket}
+                        </p>
+                        </div>
+                    </NavLink>
+                    <NavLink to="/setting"         onClick={handleClick}>
+                        <div className="group flex w-10/12 justify-between cursor-pointer">
+                        <p>Setting</p>
+                        
+                        {/* The arrow starts translated -10px and invisible */}
+                        <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                            {rightAngleBracket}
+                        </p>
+                        </div>
+                    </NavLink>
+                    <NavLink to="/notification"    onClick={handleClick}>
+                        <div className="group flex w-10/12 justify-between cursor-pointer">
+                        <p>Notification</p>
+                        
+                        {/* The arrow starts translated -10px and invisible */}
+                        <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                            {rightAngleBracket}
+                        </p>
+                        </div>
+                    </NavLink>
+            
             </div>
+            
         </div>
         </>
     )

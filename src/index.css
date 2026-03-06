@@ -279,27 +279,29 @@ nav a{
 .options{
   display: flex;
   flex-direction: column;
-  gap:16px;
-  background-color:white;
+  background-color:var(--soft-white);
   justify-content: flex-start;
-  align-items: center;
   overflow: hidden;
   width:96%;
   transition: 0.3s ease-out;
   position:absolute;
   top:-16px;
+  padding-left: 10vw;
   transition:0.3s ease;
   border-radius: 20px;
   box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
-  
 }
+
+
 .options> a{
   transform: translateY(-10px);
   transition:transform 0.4s ease,opacity 0.8s ease;
   opacity: 0;
+  padding:6px 0;
 }
 .options>:nth-child(1){
+  margin-top: 60px !important;
   transition:transform 0.3s ease 0.1s,opacity 0.4s ease 0.1s;
 }
 .options>:nth-child(2){
@@ -317,9 +319,6 @@ nav a{
 .options>:nth-child(6){
   transition:transform 0.7s ease 0.16s,opacity 0.7s ease 0.16s;
 }
-.options>:nth-child(7){
-  transition:transform 0.8s ease 0.18s,opacity 0.8s ease 0.18s;
-}
 .options.activate-animation> a{
   transform: translate(0);
   opacity: 1;
@@ -330,10 +329,12 @@ nav a{
 
 .options a{
   font-size: 18px;
-  color:black;
+  color:rgb(78, 77, 77);
   text-decoration: none;
 }
-
+.options a:hover{
+  color:black;
+}
 @media (max-width:1000px) {
   .options{
     width:80%;
@@ -374,7 +375,8 @@ nav a{
     top:-22px;
   }
 }
-@media (max-width:490px){
+
+@media (max-width:550px){
   .hambuger-menu button{
     margin-right:4vw;
   } 
