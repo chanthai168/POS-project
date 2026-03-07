@@ -17,10 +17,10 @@ function Setting(){
         <>
         <div className="flex flex-col items-center ">
             <div className="w-full mb-6 mt-0 md:w-full flex flex-col items-center justify-center lg:w-fit">
-                <h2 className="mt-0 text-3xl text-heading2 my-6 w-full">Setting</h2>
+                <h2 className=" text-3xl text-heading2 my-4 w-full">Setting</h2>
                 <div className=" bg-soft-white w-full md:w-3xl lg:w-6xl rounded-edge border-white border p-10">
                     
-                    <div className=" text-base-text  flex flex-col gap-2  mb-72">
+                    <div className=" text-base-text  flex flex-col gap-2  mb-48">
                         <FadeInSection playTime={0.2} delay={0}>
                             <Link 
                                 className="flex items-center gap-6">

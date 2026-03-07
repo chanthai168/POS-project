@@ -16,11 +16,11 @@
 @layer base {
   :root {
     --main-color: #00bdef;
-    --secondary-color: #f89738;
+    --secondary-color: tomato;
     --grey-color: #c0c0c0;
     --white-color: #ffffff;
     --soft-white:#F9F8F6;
-    --almost-black:#202020;
+    --almost-black:#2b2b2b;
     --color-bg: theme(--color-zinc-50);
     --color-text: theme(--color-zinc-950);
   }
@@ -231,6 +231,41 @@ nav a{
 
 
 /* implement NavBar for smaller screen */
+
+.mobile-nav{
+  display:flex;
+  justify-content: space-between;
+  padding:10px 6vw;
+  /* border-top: 1px solid rgb(220, 219, 219); */
+  border-bottom: 1px solid rgb(216, 215, 215);
+  background-color: var(--soft-white);
+  overflow: hidden;
+  display: none;
+}
+.mobile-nav a{
+  position: relative;
+  color:var(--almost-black);
+}
+.mobile-nav a::after{
+  content:"";
+  position:absolute;
+  bottom:-19px;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width:180%;
+  height: 8px;
+  border-radius: 20px;
+  background-color: var(--almost-black);
+  opacity: 0;
+}
+
+.mobile-nav a.active{
+  
+}
+.mobile-nav a.active::after{
+  opacity: 1;
+}
+
 .hambuger-menu{
   display: none;
   flex-direction: column;
@@ -348,9 +383,13 @@ nav a{
   .secondaryLinks{
     display: none;
   }
+
 }
 
 @media (max-width:690px) {
+    .mobile-nav{
+    display: flex;
+  }
   .hambuger-menu button{
     margin-right:4vw;
   }
