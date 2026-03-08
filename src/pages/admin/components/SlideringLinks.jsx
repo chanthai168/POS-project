@@ -8,10 +8,10 @@ const SlideringLinks = () => {
   const navRef = useRef(null);               
 
   const links = [
-    { name: 'Dashboard', path: '/' },
-    { name: 'Order', path: '/order' },
-    { name: 'Table', path: '/table' },
-    { name: 'POS', path: '/pos' },
+    { name: 'Dashboard', path: '/admin/dashboard' },
+    { name: 'Order', path: '/admin/order' },
+    { name: 'Table', path: '/admin/table' },
+    { name: 'POS', path: '/admin/pos' },
   ];
 
   function handleSliderLocation(){

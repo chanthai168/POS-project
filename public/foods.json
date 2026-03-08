@@ -1,0 +1,11 @@
+
+[
+    {
+        "image":"images/sea-food.jpg",
+        "name":"Sea Food",
+        "description":"This food is looking good and yummy, I want to eat it",
+        "allergen":["crustacean","sesame seed"],
+        "avilable":true,
+        "rating":4
+    }
+]

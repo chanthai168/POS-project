@@ -47,7 +47,6 @@ function NavForSmallScreen(){
                     <NavLink to="/"         onClick={handleClick}>
                         <div className="group flex w-10/12 justify-between cursor-pointer">
                             <p>Dashboard</p>
-                            {/* Notice the 'group-hover' modifier below */}
                             <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
                                 {rightAngleBracket}
                             </p>
@@ -57,7 +56,6 @@ function NavForSmallScreen(){
                     <NavLink to="/order"    onClick={handleClick}>
                         <div className="group flex w-10/12 justify-between cursor-pointer">
                             <p>Order</p>
-                            {/* Notice the 'group-hover' modifier below */}
                             <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
                                 {rightAngleBracket}
                             </p>
@@ -67,7 +65,6 @@ function NavForSmallScreen(){
                     <NavLink to="/table"    onClick={handleClick}>
                         <div className="group flex w-10/12 justify-between cursor-pointer">
                             <p>Table</p>
-                            {/* Notice the 'group-hover' modifier below */}
                             <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
                                 {rightAngleBracket}
                             </p>
@@ -78,27 +75,26 @@ function NavForSmallScreen(){
                         <div className="group flex w-10/12 justify-between cursor-pointer">
                         <p>POS</p>
                         
-                        {/* The arrow starts translated -10px and invisible */}
                         <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
                             {rightAngleBracket}
                         </p>
                         </div>
                     </NavLink>
+
                     <NavLink to="/setting"         onClick={handleClick}>
                         <div className="group flex w-10/12 justify-between cursor-pointer">
                         <p>Setting</p>
                         
-                        {/* The arrow starts translated -10px and invisible */}
                         <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
                             {rightAngleBracket}
                         </p>
                         </div>
                     </NavLink>
+
                     <NavLink to="/notification"    onClick={handleClick}>
                         <div className="group flex w-10/12 justify-between cursor-pointer">
                         <p>Notification</p>
                         
-                        {/* The arrow starts translated -10px and invisible */}
                         <p className="transition-all duration-300 ease-in-out -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
                             {rightAngleBracket}
                         </p>

@@ -1,24 +1,14 @@
 
 import { Routes,Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import Order from "./pages/Order";
-import Nav from "./components/sementic/Nav";
-import Setting from "./pages/setting/Setting";
+// import Admin from "./role/admin_mode/Admin";
+// import User from "./role/user_mode/User";
+
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <>
-    <div className="app-background"></div>
-    <Nav/>
-
-    <main>
-      <Routes>
-        <Route path="/" element={<Dashboard/>}></Route>
-        <Route path="/order" element={<Order/>}></Route>
-        <Route path="/setting" element={<Setting/>}></Route>
-      </Routes>
-    </main>
-
+      <AppRoutes/>
     </>
   );
 }
