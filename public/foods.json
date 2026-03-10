@@ -1,11 +1,68 @@
-
 [
     {
-        "image":"images/sea-food.jpg",
-        "name":"Sea Food",
-        "description":"This food is looking good and yummy, I want to eat it",
-        "allergen":["crustacean","sesame seed"],
-        "avilable":true,
-        "rating":4
+        "id": 1,
+        "image": "/images/otDg.jpg",
+        "name": "Grilled Lobster",
+        "description": "Fresh lobster grilled with garlic butter, looks incredibly delicious",
+        "allergen": ["crustacean", "milk"],
+        "avilable": true,
+        "rating": 5,
+        "price": 28.99,
+        "category": "Food"
+    },
+    {
+        "id": 2,
+        "image": "/images/prohok.jpg",
+        "name": "Spicy Shrimp Pasta",
+        "description": "Creamy pasta loaded with juicy prawns and chili kick",
+        "allergen": ["crustacean", "gluten", "milk"],
+        "avilable": true,
+        "rating": 4,
+        "price": 16.50,
+        "category": "Food"
+    },
+    {
+        "id": 10,
+        "image": "/images/sea-food.jpg",
+        "name": "Cajun Prawn Skewers",
+        "description": "Spicy grilled prawns with smoky cajun seasoning",
+        "allergen": ["crustacean"],
+        "avilable": true,
+        "rating": 4,
+        "price": 15.99,
+        "category": "Food"
+    },
+    {
+        "id": 11,
+        "image": "/images/purpleDrink.jpg",
+        "name": "Fresh Coconut Water",
+        "description": "Chilled young coconut straight from the shell – super refreshing",
+        "allergen": [],
+        "avilable": true,
+        "rating": 5,
+        "price": 3.50,
+        "category": "Drink"
+    },
+    {
+        "id": 12,
+        "image": "/images/orange.jpg",
+        "name": "Passion Fruit Mojito",
+        "description": "Refreshing mocktail with fresh passion fruit, mint, lime and soda",
+        "allergen": [],
+        "avilable": true,
+        "rating": 4,
+        "price": 5.99,
+        "category": "Drink"
+    },
+    {
+        "id": 13,
+        "image": "/images/caffe.jpg",
+        "name": "Iced Lemongrass Ginger Tea",
+        "description": "Lightly sweetened herbal tea with lemongrass and fresh ginger – great palate cleanser",
+        "allergen": [],
+        "avilable": true,
+        "rating": 4,
+        "price": 4.25,
+        "category": "Drink"
     }
 ]

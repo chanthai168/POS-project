@@ -52,7 +52,7 @@ function TableCreationModal({ onClose, onSave }) {
   const handleSave = () => { if (!form.number || !form.capacity) return; onSave(form); onClose() }
 
   return (
-    <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.35)', display:'flex', alignItems:'center', justifyContent:'center', zIndex:1000 }}
+    <div style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.35)',backdropFilter:"blur(2px)", display:'flex', alignItems:'center', justifyContent:'center', zIndex:1000 }}
       onClick={e => e.target === e.currentTarget && onClose()}>
       <div style={{ background:'#fff', borderRadius:16, padding:28, width:'100%', maxWidth:440, boxShadow:'0 20px 60px rgba(0,0,0,0.15)' }}>
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20 }}>
