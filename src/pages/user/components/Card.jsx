@@ -50,7 +50,7 @@ function Card(Data){
         </div>
 
         {isClick &&(
-            <PopUpCard Data={Data}  handleClick={handleClick} setIsPurchase={setIsPurchase}/>
+            <PopUpCard Data={Data}  handleClick={handleClick} setIsPurchase={setIsPurchase} setCart={Data.setCart} cart={Data.cart}/>
         )}
 
         {isPurchase && (

@@ -9,7 +9,7 @@ function SearchAndFilter({query,setQuery,category,setCategory}){
 
     return(
         <>
-        <div className="flex gap-2 w-full md:w-auto relative">
+        <div className="flex gap-2 w-full md:w-auto relative items-center">
             {/* Search Input */}
             <label className="bg-white inline-flex gap-2 w-full items-center h-10 p-1 pl-3 md:bg-soft-gray rounded-3xl  text-gray-600">
                 <span >{searchIcon}</span>

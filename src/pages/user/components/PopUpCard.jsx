@@ -6,11 +6,29 @@ const availableIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height=
 const starIcon = <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 24 24"><path fill="currentColor" d="m8.85 16.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425zM5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275zM12 12.25"></path></svg>;
 
 import { useState } from "react";
-function PopUpCard({Data,handleClick,setIsPurchase}){
+function PopUpCard({Data,handleClick,setIsPurchase,setCart,cart}){
 
     function handlePaymentGateway(){
         handleClick(prev=>!prev);
         setIsPurchase(prev => !prev);
+    }
+
+    function addItemToCart(){
+        const copy = [...cart];
+        const target = copy.find(e => e.id === Data.data.id);
+
+        if(target){
+            target.quantity ++;
+            setCart(copy);
+            
+        }else{
+            Data.data.quantity = 1;
+            copy.push(Data.data);
+            setCart(copy);
+        }
+        
+        handleClick(prev=>!prev);
+        
     }
 
     return(
@@ -60,8 +78,9 @@ function PopUpCard({Data,handleClick,setIsPurchase}){
                     
                     <div className="flex flex-col justify-end gap-2">
                         <button onClick={e=>{handleClick(prev=>!prev)}}
-                        className="bg-gray-300 text-red-600 rounded-4xl px-8 py-2  hover:bg-red-100 active:scale-105">Cancell</button>
-                        <button className="bg-gray-300 rounded-4xl px-8 py-2  hover:bg-gray-400 active:scale-105">Add to Cart</button>
+                        className="bg-gray-300 text-red-600 rounded-4xl px-8 py-2  active:scale-105">Cancell</button>
+                        <button onClick={addItemToCart}
+                        className="bg-gray-300 rounded-4xl px-8 py-2   active:scale-105">Add to Cart</button>
                         <button onClick={handlePaymentGateway}
                         className="bg-blue-500 text-gray-200 rounded-4xl px-8 py-2 hover:bg-blue-600 active:scale-105">Purchase Now</button>
                     </div>

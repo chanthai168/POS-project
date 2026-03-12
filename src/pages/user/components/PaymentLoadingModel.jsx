@@ -53,7 +53,7 @@ const PaymentLoadingModal = ({isPurchase,setIsPurchase}) => {
         {/* Test/Cancel Button */}
         <button
           onClick={handleClick}
-          className="w-full py-2 px-6 bg-blue-500 text-white  hover:bg-red-50  hover:text-red-600 rounded-4xl transition-colors duration-200 "
+          className="w-full py-2 px-6 bg-blue-500 text-white    hover:bg-blue-600 rounded-4xl transition-colors duration-200 "
         >
           Confirm Payment
         </button>
