@@ -14,7 +14,7 @@ function Card(Data){
     return(
         <>
         <div onClick={ handleClick}  className="w-96  flex flex-col bg-white items-center rounded-edge">
-            <div className="bg-[#FBEFEF] w-full rounded-edge flex justify-center px-12 py-6">
+            <div className="bg-[#FBEFEF] w-full rounded-edge flex justify-center px-8 md:px-12 py-6">
                 <img src={Data.data.image} alt="food" className=" w-80 rounded-3xl" />
             </div>
 

@@ -1,11 +1,16 @@
 import React,{useState} from 'react';
+import { Navigate,useNavigate } from 'react-router-dom';
 
 const PaymentLoadingModal = ({isPurchase,setIsPurchase}) => {
   
   if (!isPurchase) return null;
 
+  const navigate = useNavigate();
+
   function handleClick(){
+    navigate("/user/menu")
     setIsPurchase(!isPurchase);
+    
   }
 
   return (

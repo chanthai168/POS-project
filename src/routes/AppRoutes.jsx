@@ -12,6 +12,7 @@ import POS from "../pages/admin/POS";
 import Setting from "../pages/admin/Setting";
 
 import Menu from "../pages/user/Menu";
+import Cart from "../pages/user/Cart";
 
 function AppRoutes(){
     return(
@@ -27,6 +28,7 @@ function AppRoutes(){
 
             <Route path="/user" element={<User/>}>
                 <Route path="menu" element={<Menu/>}></Route>
+                <Route path="cart" element={<Cart/>}></Route>
             </Route>
 
             <Route path="/" element={<Login/>}></Route>

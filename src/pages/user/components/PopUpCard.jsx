@@ -14,7 +14,19 @@ function PopUpCard({Data,handleClick,setIsPurchase,setCart,cart}){
     }
 
     function addItemToCart(){
+
+        // setCart(prev=>{
+        //     return prev.map(e=>{
+        //         if(e.id == Data.data.id){
+        //             return {...e,quantity:e.quantity + 1};
+        //         }
+        //         e.quantity = 1;
+        //         return e;
+        //     })
+        // })
+
         const copy = [...cart];
+        
         const target = copy.find(e => e.id === Data.data.id);
 
         if(target){
