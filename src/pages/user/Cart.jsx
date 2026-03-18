@@ -12,11 +12,13 @@ import PaymentLoadingModal from "./components/PaymentLoadingModel";
 
 function Cart() {
   const { cart, setCart } = useAppContext();
+  const {salesRanking,setSalesRanking} = useAppContext();
   
   const [lenCart,setLenCart] = useState(cart.length);
   const [payMethod, setPayMethod] = useState("QR");
   const [tableNumber, setTableNumber] = useState(null);
   const [isCheckout,setIsCheckout] = useState(false);
+ 
 
   let subTotal = 0;
   let foodId = [];
@@ -29,7 +31,6 @@ function Cart() {
   let total = subTotal - discount;
 
   function handleCheckout(){
-    console.log(order);
 
     if(lenCart == 0){
       window.alert("Please, Order something before checkout...");
@@ -38,7 +39,32 @@ function Cart() {
 
     setIsCheckout(true);
     setCart([]);
+
+    //update sales ranking
+    // setSalesRanking(order);
+    updateSalesRanking();
   }
+
+    function updateSalesRanking() {
+      setSalesRanking((prev) => {
+        // 1. Create a deep copy or map to a new array
+        return prev.map((item) => {
+          // 2. Find if this item exists in the cart
+          const cartItem = cart.find((e) => e.id === item.id);
+
+          if (cartItem) {
+            // 3. Return a NEW object (do not mutate the old one)
+            return {
+              ...item,
+              quantity: item.quantity + cartItem.quantity,
+            };
+          }
+          
+          // 4. If not in cart, return item as is
+          return item;
+        });
+      });
+    }
 
   useEffect(()=>{
     setLenCart(cart.length);
@@ -57,7 +83,6 @@ function Cart() {
   return (
     <>
     <div className=" flex flex-col lg:flex-row items-start gap-2 my-[2vw]">
-      
 
       <div className="inline-flex flex-col p-4 gap-2 w-full lg:w-[60vw] items-center bg-soft-white md:py-12 md:px-8 lg:px-12 rounded-3xl border border-white md:rounded-edge min-h-46 md:min-h-124  ">
         

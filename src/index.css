@@ -1,6 +1,21 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
 
+
+/* Remove focus outline from Recharts elements */
+.recharts-wrapper *:focus,
+.recharts-wrapper svg *:focus,
+.recharts-tooltip-wrapper:focus,
+.recharts-layer:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Also target the tooltip wrapper specifically */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
 @theme {
   --color-mint-500: oklch(0.72 0.11 178);
   --color-coral-600: oklch(0.65 0.15 30);
@@ -48,7 +63,8 @@ body {
 }
 
 main{
-  padding: 0 4vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
 }
 .app-background{
   width: 100vw;
@@ -254,7 +270,7 @@ nav a{
   width:180%;
   height: 8px;
   border-radius: 20px;
-  background-color: tomato;
+  background-color: rgb(83, 83, 83);
   opacity: 0;
 }
 
@@ -440,4 +456,11 @@ nav a{
   .logo img{
     display: none;
   }
+  main{
+    padding:0 2vw;
+  }
+}
+
+.recharts-default-tooltip {
+  color: white !important;
 }
