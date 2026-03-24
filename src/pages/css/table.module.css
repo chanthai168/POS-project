@@ -1,0 +1,364 @@
+/* Layout */
+
+.page {
+  padding: 24px;
+  font-family: sans-serif;
+}
+
+.pageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Status */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.statCard {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.statCardCenter {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statValue {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Table List Card */
+
+.tableCard {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tableCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tableCardTitle {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.filterSelect {
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1.5px solid #e8e8e8;
+  background: #fff;
+  font-size: 12.5px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Table */
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.dataTable th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dataTable td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.tdActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Color Cicrle */
+
+.colorCircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.circleRed    { background: #ef5350; }
+.circlePink   { background: #ec407a; }
+.circleYellow { background: #ffc107; }
+.circleBlue   { background: #42a5f5; }
+.circleNavy   { background: #3949ab; }
+.circleGreen  { background: #66bb6a; }
+.circlePurple { background: #ab47bc; }
+.circleOrange { background: #ffa726; }
+
+/* Toggle Swtich */
+
+.toggle {
+  width: 38px;
+  height: 22px;
+  border-radius: 11px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  background: #ddd;
+  transition: background 0.2s;
+}
+
+.toggleActive {
+  background: #4caf50;
+}
+
+.toggleThumb {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: left 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.toggleActive .toggleThumb {
+  left: 19px;
+}
+
+/* Type Badge */
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.typeBadgeVip {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.typeBadgeNormal {
+  background: #e8f5e9;
+  color: #388e3c;
+}
+
+/* Buttons */
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 30px;
+  border: 1.5px solid #e8e8e8;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #f44336;
+}
+
+.btnCreateTable {
+  width: 100%;
+  padding: 9px 18px;
+  border-radius: 30px;
+  border: 1.5px solid #e8e8e8;
+  background: transparent;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btnPill {
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  background: #f0f0f0;
+  color: #888;
+}
+
+.btnPillStatusActive {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btnPillStatusDisactive {
+  background: #fe2217;
+  color: #fff;
+}
+
+.btnPillVipActive {
+  background: #f3e5f5;
+  color: #7b1fa2;
+  border-color: #ce93d8;
+}
+
+.btnPillNormalActive {
+  background: #e8f5e9;
+  color: #388e3c;
+  border-color: #a5d6a7;
+}
+
+/* Modal */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modalTitle {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.modalCloseBtn {
+  background: #fff0f0;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: #f44336;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalFooter {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btnCancel {
+  flex: 1;
+  padding: 9px 18px;
+  border-radius: 30px;
+  border: 1.5px solid #e8e8e8;
+  background: transparent;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btnDark {
+  flex: 1;
+  padding: 9px 18px;
+  border-radius: 30px;
+  border: none;
+  background: #1a1a1a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Form */
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #e8e8e8;
+  font-size: 13.5px;
+  outline: none;
+  background: #fafafa;
+  box-sizing: border-box;
+}
+
+.formRow {
+  display: flex;
+  gap: 8px;
+}
