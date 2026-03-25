@@ -10,7 +10,7 @@ function Box(){
                 <p className=" bg-soft-gray w-12 h-12 flex items-center justify-center rounded-3xl">{totalCustomerIcon}</p>
                 <p className=" text-2xl md:text-3xl font-[Lato] ">32</p>
             </div>
-            <p className="text-gray-600 text-sm">Total-Customer</p>
+            <p className="text-gray-600 text-sm md:text-md">Total-Customer</p>
         </div>
         </>
     )
