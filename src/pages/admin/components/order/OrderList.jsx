@@ -118,11 +118,11 @@ function DetailModal({ order, onClose, onUpdateStatus }) {
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-edge shadow-2xl w-full p-4 max-w-md border border-white overflow-hidden"
+        className="bg-white rounded-3xl lg:rounded-edge shadow-2xl w-[96vw] p-2 md:p-4  max-w-md border border-white overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-start justify-between px-6 py-4 border-b border-gray-100">
+        <div className="flex items-start justify-between px-6 py-4 ">
           <div>
             <h3 className="text-base  text-gray-800">
               Order #{order.orderId}
@@ -140,7 +140,7 @@ function DetailModal({ order, onClose, onUpdateStatus }) {
         </div>
 
         {/* Items */}
-        <div className="px-6 py-4">
+        <div className="px-6 py-4 max-h-62 rounded-2xl overflow-y-scroll overflow-hidden bg-soft-gray">
           <div className="grid grid-cols-5 text-sm gap-2 text-gray-600 tracking-wide mb-2">
             <span className="text-right"></span>
             <span className="col-span-2">Name</span>
@@ -274,7 +274,7 @@ function OrderList({orders,setOrder}) {
   });
 
   return (
-    <div className="rounded-edge border border-white bg-soft-white flex items-center justify-center p-6">
+    <div className="rounded-3xl lg:rounded-edge border mb-4 border-white bg-soft-white flex items-center justify-center p-6">
       <div className="w-full">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -313,7 +313,7 @@ function OrderList({orders,setOrder}) {
         </div>
 
         {/* Table Header */}
-        <div className="grid grid-cols-6 text-xs text-gray-600 tracking-wide px-2 mb-2">
+        <div className=" hidden  lg:grid grid-cols-6 text-xs text-gray-600 tracking-wide px-2 mb-2">
           <span>Table Number</span>
           <span className="text-center">Payment Method</span>
           <span className="text-center">Total Price</span>
@@ -331,7 +331,7 @@ function OrderList({orders,setOrder}) {
 
           return (
             <div key={order.orderId}>
-              <div className="grid grid-cols-6 items-center px-2 py-4 hover:bg-gray-50 rounded-xl transition-colors">
+              <div className="grid grid-cols-4 items-start lg:grid-cols-6  lg:items-center gap-2 px-2 py-4 hover:bg-gray-50 rounded-xl transition-colors">
                 {/* Table Number */}
                 <div className="flex items-center gap-3">
                   {order.tableNumber != null ? (
@@ -361,12 +361,12 @@ function OrderList({orders,setOrder}) {
                 </span>
 
                 {/* Status */}
-                <span className={`text-center text-sm justify-center font-medium flex  `}>
-                  <span className={`w-24 rounded-sm ${getStatusTextClass(order.status)}`}>{order.status.toUpperCase()}</span>
+                <span className={`text-center w-auto text-sm justify-center font-medium flex  `}>
+                  <span className={`w-24 rounded-sm hiden ${getStatusTextClass(order.status)}`}>{order.status.toUpperCase()}</span>
                 </span>
 
                 {/* Actions */}
-                <div className="flex items-center justify-end gap-2">
+                <div className="flex items-center col-span-3 lg:col-span-1   justify-end gap-2 ">
                   {order.status !== "serving" && (
                     <button
                       onClick={() => {
@@ -375,7 +375,7 @@ function OrderList({orders,setOrder}) {
                                          order.status === "preparing" ? "serving" : "completed";
                         updateOrderStatus(order.orderId, nextStatus);
                       }}
-                      className={`px-4 py-1.5 rounded-3xl text-sm transition-all ${getStatusButtonClass(order.status)}`}
+                      className={`px-4 py-1.5 rounded-3xl text-sm  ${getStatusButtonClass(order.status)}`}
                     >
                       {getStatusButtonText(order.status)}
                     </button>
@@ -397,6 +397,7 @@ function OrderList({orders,setOrder}) {
                     Detail
                   </button>
                 </div>
+
               </div>
               <div className="border-t border-gray-200" />
             </div>

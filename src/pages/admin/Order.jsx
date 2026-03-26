@@ -53,11 +53,12 @@ function Order() {
     <div className="mt-6 md:mt-8">
         <h2 className=" text-2xl md:text-3xl font-medium mb-2">Operational Snapshot</h2>
         
-        <div className="flex flex-col md:flex-row gap-2 pb-2">
-            <Box icon={confirmIcon} number={numberOfPending} text={"Pending"} />
-            <div className=" flex gap-2">
-              <Box icon={preparIcon} number={numberOfConfirm} text={"Confirm"} />
-              <Box icon={readyToServedIcon} number={numberOfPreparing} text={"Preparing"} />
+        <div className="flex flex-col md:flex-row gap-2 mb-2 ">
+
+            <div className=" flex gap-2  ">
+              <div className="w-[33.33%]  md:w-[50%]"><Box icon={confirmIcon} number={numberOfPending} text={"Pending"} /></div>
+              <div className=" w-[33.33%] md:w-[50%]"><Box icon={preparIcon} number={numberOfConfirm} text={"Confirm"} /></div>
+              <div className=" w-[33.33%] md:w-[50%]"><Box icon={readyToServedIcon} number={numberOfPreparing} text={"Preparing"} /></div>
             </div>
 
             <h2 className="text-2xl font-medium mt-3 sm:hidden">Analytic</h2>
