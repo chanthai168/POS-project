@@ -8,6 +8,8 @@ export function AppProvider({ children }) {
 
   const [cart,setCart] = useState([]);
   
+  const [order,setOrder] = useState([]);
+
   const addQuantityData = datas.map(data=> {
     data.quantity=1;
     return data;
@@ -20,6 +22,8 @@ export function AppProvider({ children }) {
     setCart,
     salesRanking,
     setSalesRanking,
+    order,
+    setOrder,
   };
 
   return (

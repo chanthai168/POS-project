@@ -8,6 +8,8 @@ import TableBox from "./components/box/TableBox";
 import SalesRankingCard from "./components/dashboard/SalesRankingCard";
 
 const angleIcon = <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M12 15.121a1 1 0 0 1-.707-.293L7.05 10.586a1 1 0 0 1 1.414-1.414L12 12.707l3.536-3.535a1 1 0 0 1 1.414 1.414l-4.243 4.242a1 1 0 0 1-.707.293"></path></svg>;
+const totalCustomerIcon = <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 2048 2048"><path fill="currentColor" d="M1792 384h-128V256H475l768 768l-768 768h1189v-128h128v256H256v-91l805-805l-805-805v-91h1536z"></path></svg>;
+
 
 let DATA = {
   Week: {
@@ -77,7 +79,7 @@ function Dashboard() {
             <RevenueBox/>
             <div className=" flex gap-2">
               <TableBox/>
-              <Box/>
+              <Box icon={totalCustomerIcon} number={30} text={"Total-Customer"} />
             </div>
 
             <h2 className="text-2xl font-medium mt-3 sm:hidden">Analytic</h2>

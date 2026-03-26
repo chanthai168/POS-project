@@ -1,55 +1,63 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 
-const COLORS = ['#ed05da', '#0547ed', '#15D1D1', '#ff4788'];
-
-const DonutChart = ({ORDER_DATA}) => {
-  const [data, setData] = useState([]);
+const DonutChart = ({ ORDER_DATA }) => {
+  const [data, setData] = useState([]); 
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // Simulate loading data + trigger animation
-    setTimeout(() => {
-      setData(ORDER_DATA);
-    }, 100);
-  }, []);
+    if (isFirstRender.current) {
+      setTimeout(() => setData(ORDER_DATA), 0); // animate only on mount
+      isFirstRender.current = false;
+    } else {
+      setData(ORDER_DATA); // update instantly, no animation flash
+    }
+  }, [ORDER_DATA]);
+
+  const isEmpty = data.length === 0 || data.every(entry => entry.order === 0);
+
+  const displayData = isEmpty
+    ? [{ name: "No Orders", order: 1, color: "#e5e7eb" }]
+    : data;
 
   return (
-    <div style={{  height: '160px' }}>
+    <div style={{ height: '160px' }}>
       <ResponsiveContainer>
         <PieChart>
           <Pie
-            data={data}
+            data={displayData}
             dataKey="order"
             nameKey="name"
             cx="50%"
             cy="50%"
             innerRadius="66%"
             outerRadius="90%"
-            paddingAngle={2}
+            paddingAngle={isEmpty ? 0 : 2}
             labelLine={false}
-            isAnimationActive={true}
+            isAnimationActive={!isEmpty}
             animationDuration={400}
             animationEasing="ease"
-            cornerRadius={4}
+            cornerRadius={isEmpty ? 0 : 4}
             focusable={false}
           >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            {displayData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
             ))}
           </Pie>
 
-          <Tooltip
-            formatter={(order,name) => [`${name} ${order.toLocaleString()}`]}
-            contentStyle={{
-              borderRadius: "12px",
-              border: "1px solid #e5e7eb",
-              fontSize: "14px",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-            }}
-            cursor={{ stroke: "#115ff0", strokeWidth: 1, strokeDasharray: "4 4" }}
-            wrapperStyle={{zIndex:"100"}}
-          />
-          
+          {!isEmpty && (
+            <Tooltip
+              formatter={(order, name) => [`${name} ${order.toLocaleString()}`]}
+              contentStyle={{
+                borderRadius: "12px",
+                border: "1px solid #e5e7eb",
+                fontSize: "14px",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+              }}
+              cursor={{ stroke: "#115ff0", strokeWidth: 1, strokeDasharray: "4 4" }}
+              wrapperStyle={{ zIndex: "100" }}
+            />
+          )}
         </PieChart>
       </ResponsiveContainer>
     </div>
