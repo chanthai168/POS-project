@@ -1,14 +1,20 @@
 /* Layout */
 
+:root {
+    --grey-color: #c0c0c0;
+    --soft-white:#F9F8F6;
+    --soft-gray:#E3E3E3;
+    --almost-black:#484848;
+  }
 .page {
-  padding: 24px;
+  padding: 0px;
   font-family: sans-serif;
 }
 
 .pageTitle {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-top: 28px;
+  font-weight: 500;
 }
 
 /* Status */
@@ -16,55 +22,91 @@
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .statCard {
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  display: flex;
+  background: var(--soft-white);
+  border-radius: 48px;
+  padding: 24px 24px;
+  border:1px solid white;
+  display: flex ;
+  flex-direction: column;
+  gap: 0px;
+  font-family: Lato;
+}
+
+.icon{
+  background-color:var(--soft-gray);
+  width:46px;
+  height:46px;
+  border-radius:100%;
+  display:flex;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
 }
 
 .statCardCenter {
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  background: var(--soft-white);
+  border-radius: 48px;
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .statValue {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 32px;
 }
 
 .statLabel {
-  font-size: 12px;
-  color: #888;
+  margin-top:48px;
+  font-size: 14px;
+  color: #565656;
+}
+
+
+
+/* Table List Card */
+
+.tableCard {
+  background: var(--soft-white);
+  border:1px solid white;
+  border-radius: 48px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 32px;
 }
 
 @media (max-width: 768px) {
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .statCard,.statCardCenter{
+    border-radius: 24px;
+    padding:12px;
+  }
+  .tableCard{
+    border-radius: 24px;
+    padding:8px;
+  }
+  .statLabel{
+    margin-top: 24px;
+  }
+  .page{
+    margin-top:20px;
+
+  }
+  .statValue {
+  font-size: 24px;
+  }
+  .pageTitle{
+    font-size:24px;
+    margin-bottom: 8px;
+  }
 }
-
-/* Table List Card */
-
-.tableCard {
-  background: #fff;
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-}
-
 .tableCardHeader {
   display: flex;
   justify-content: space-between;
@@ -73,15 +115,14 @@
 }
 
 .tableCardTitle {
-  font-weight: 700;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 540;
 }
 
 .filterSelect {
-  padding: 7px 12px;
+  padding: 8px 12px;
   border-radius: 20px;
-  border: 1.5px solid #e8e8e8;
-  background: #fff;
+  background: var(--soft-gray);
   font-size: 12.5px;
   cursor: pointer;
   outline: none;
@@ -98,15 +139,17 @@
 .dataTable th {
   text-align: left;
   padding: 10px 14px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #888;
-  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #5b5b5b;
+  font-weight: 400 !important;
+  font-family: Lato;
+  border-bottom: 1px solid #d6d6d6;
 }
 
 .dataTable td {
-  padding: 12px 14px;
+  padding: 12px 2px;
   border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid rgb(235, 233, 233);
 }
 
 .tdActions {
@@ -152,7 +195,7 @@
 }
 
 .toggleActive {
-  background: #4caf50;
+  background: #64e169;
 }
 
 .toggleThumb {
@@ -177,14 +220,16 @@
   display: inline-flex;
   align-items: center;
   padding: 3px 10px;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 11.5px;
   font-weight: 600;
+  width:60px;
+  justify-content: center;
 }
 
 .typeBadgeVip {
   background: #f3e5f5;
-  color: #7b1fa2;
+  color: #af43dd;
 }
 
 .typeBadgeNormal {
@@ -208,22 +253,25 @@
 }
 
 .btnIcon {
-  background: none;
+  background: rgb(254, 234, 234);
   border: none;
   cursor: pointer;
   color: #f44336;
+  padding:4px 22px;
+  border-radius: 4px;
+
 }
 
 .btnCreateTable {
   width: 100%;
   padding: 9px 18px;
   border-radius: 30px;
-  border: 1.5px solid #e8e8e8;
-  background: transparent;
-  font-weight: 600;
-  font-size: 13px;
+  color:black;
+  background: var(--soft-gray);
+  font-size: 14px;
   cursor: pointer;
 }
+
 
 .btnPill {
   padding: 5px 16px;

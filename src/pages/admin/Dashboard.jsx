@@ -40,7 +40,8 @@ function Dashboard() {
     const [period, setPeriod] = useState("Week");
     const [open, setOpen] = useState(false);
     const { xData, yData } = DATA[period];
-    const {salesRanking} = useAppContext();
+    const {salesRanking,order} = useAppContext();
+
 
     function totalRevenueCalculation(){
       let totalRevenue = 0;
@@ -79,7 +80,9 @@ function Dashboard() {
             <RevenueBox/>
             <div className=" flex gap-2">
               <TableBox/>
-              <Box icon={totalCustomerIcon} number={30} text={"Total-Customer"} />
+              <div className=" w-[50%]">
+              <Box icon={totalCustomerIcon} number={order.length + 6} text={"Total-Customer"} />
+              </div>
             </div>
 
             <h2 className="text-2xl font-medium mt-3 sm:hidden">Analytic</h2>

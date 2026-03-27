@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import styles from "../css/table.module.css"
+import { useAppContext } from '../../context/AppProvider'
 
 // ─────────────────────────────────────────────
 // Constants
@@ -15,16 +16,6 @@ const CIRCLE_COLORS = [
   'circleGreen',
   'circlePurple',
   'circleOrange',
-]
-
-const INITIAL_TABLES = [
-  { id: 1, number: 1, capacity: 4, status: true,  type: 'VIP',    color: 'circleRed'    },
-  { id: 2, number: 2, capacity: 4, status: true,  type: 'VIP',    color: 'circlePink'   },
-  { id: 3, number: 3, capacity: 4, status: true,  type: 'VIP',    color: 'circleYellow' },
-  { id: 4, number: 4, capacity: 4, status: false, type: 'VIP',    color: 'circleBlue'   },
-  { id: 5, number: 5, capacity: 4, status: false, type: 'Normal', color: 'circleNavy'   },
-  { id: 6, number: 6, capacity: 6, status: true,  type: 'Normal', color: 'circleGreen'  },
-  { id: 7, number: 7, capacity: 2, status: false, type: 'Normal', color: 'circlePurple' },
 ]
 
 // ─────────────────────────────────────────────
@@ -59,12 +50,12 @@ const TrashIcon  = (props) => <Icon {...props} path={<path d="M3 6h18M8 6V4h8v2M
 
 function StatCard({ icon, value, label }) {
   return (
-    <div className={styles.statCard}>
-      {icon}
-      <div>
+    <div className={styles.statCard} >
+      <div className=' flex gap-2'>
+        <div className={styles.icon}>{icon}</div>
         <div className={styles.statValue}>{value}</div>
-        <div className={styles.statLabel}>{label}</div>
       </div>
+      <div className={styles.statLabel}>{label}</div>
     </div>
   )
 }
@@ -91,24 +82,21 @@ function TypeBadge({ type }) {
 
 function TableRow({ table, onToggle, onDelete }) {
   return (
-    <tr>
-      <td>
-        <div className={`${styles.colorCircle} ${styles[table.color]}`}>
+    <tr >
+      <td className=' flex justify-center'>
+        <div className={`${styles.colorCircle} ${styles[table.color]}`} >
           {table.number}
         </div>
       </td>
-      <td>{table.capacity}</td>
-      <td>
+      <td className=' text-center'>{table.capacity}</td>
+      <td className=' text-center'>
         <ToggleSwitch isActive={table.status} onToggle={() => onToggle(table.id)} />
       </td>
-      <td>
+      <td className=' text-center'>
         <TypeBadge type={table.type} />
       </td>
-      <td>
+      <td className=' flex justify-center'>
         <div className={styles.tdActions}>
-          <button className={styles.btnOutline}>
-            <PencilIcon size={11} /> Edit
-          </button>
           <button className={styles.btnIcon} onClick={() => onDelete(table.id)}>
             <TrashIcon size={15} />
           </button>
@@ -229,8 +217,9 @@ function TableCreationModal({ onClose, onSave }) {
 // Main Component
 // ─────────────────────────────────────────────
 
+
 export default function Table() {
-  const [tables, setTables]       = useState(INITIAL_TABLES)
+  const {tables,setTables} = useAppContext();
   const [showModal, setShowModal] = useState(false)
   const [filter, setFilter]       = useState('All table')
 
@@ -265,7 +254,7 @@ export default function Table() {
       : tables.filter((t) => t.type === filter)
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} style={{fontFamily: "Manrope"}}>
       <h1 className={styles.pageTitle}>Table Overview</h1>
 
       {/* ── Stats ── */}
@@ -287,7 +276,7 @@ export default function Table() {
         />
         <div className={styles.statCardCenter}>
           <button className={styles.btnCreateTable} onClick={() => setShowModal(true)}>
-            + Create New Table
+            Create New Table
           </button>
         </div>
       </div>
@@ -310,8 +299,8 @@ export default function Table() {
         <table className={styles.dataTable}>
           <thead>
             <tr>
-              {['Table number', 'Capacity', 'Status', 'Type', 'Action'].map((heading) => (
-                <th key={heading}>{heading}</th>
+              {['#', "capacity", 'Status', 'Type', 'Action'].map((heading) => (
+                <th style={{textAlign:"center"}} key={heading}>{heading}</th>
               ))}
             </tr>
           </thead>
