@@ -19,8 +19,6 @@ const SlideringLinks = () => {
       console.log("Active index is here" + activeIndex);
 
       const currentLink = linkRefs.current[activeIndex];
-      console.log("current link is: ");
-      console.log(linkRefs.current[activeIndex]);
 
       if (currentLink) {
         setSliderStyle({

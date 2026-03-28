@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAppContext } from "../../../context/AppProvider";
 
 const rightAngleBracket = <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 320 512"><path fill="currentColor" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256L73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>;
 
-const TABLE_NUMBERS = [1,2,3,4,5,6,7,8,9,10,11,12];
+
 const PAY_METHODS = ["QR", "Cash", "Card"];
+
 
 function Checkout({total,payMethod,setPayMethod,tableNumber,setTableNumber,handleCheckout}) {
 
   const [showTableDropdown, setShowTableDropdown] = useState(false);
-  
+  const {tables} = useAppContext();
+
+  const TABLE_NUMBERS = tables.filter(table => !table.status).map(e=>e.number);
 
   return (
     <div className="flex flex-col w-full lg:w-[40vw] bg-soft-white rounded-3xl md:rounded-edge  p-4 md:p-8 border border-white ">
@@ -74,11 +78,11 @@ function Checkout({total,payMethod,setPayMethod,tableNumber,setTableNumber,handl
 
       {/* Actions */}
       <div className="flex justify-center gap-4 mt-12">
-        <NavLink to="/user/menu" className="w-[50%] bg-gray-300 rounded-3xl py-1.5 flex justify-center">
+        <NavLink to="/user/menu" className="w-[50%] bg-gray-300 rounded-3xl py-1.5 flex justify-center active:scale-95">
             <button >Order More</button>
         </NavLink>
         <button onClick={handleCheckout}
-        className="w-[50%] bg-blue-500 text-white rounded-3xl py-1">Checkout</button>
+        className="w-[50%] bg-blue-500 text-white rounded-3xl py-1 active:scale-95">Checkout</button>
       </div>
     </div>
   );

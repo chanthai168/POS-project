@@ -169,7 +169,7 @@
   justify-content: center;
   color: #fff;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .circleRed    { background: #ef5350; }
@@ -222,7 +222,7 @@
   padding: 3px 10px;
   border-radius: 4px;
   font-size: 11.5px;
-  font-weight: 600;
+  font-weight: 500;
   width:60px;
   justify-content: center;
 }
@@ -248,7 +248,7 @@
   border: 1.5px solid #e8e8e8;
   background: transparent;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -270,40 +270,46 @@
   background: var(--soft-gray);
   font-size: 14px;
   cursor: pointer;
+  transition:0.3s ease;
+}
+.btnCreateTable:hover{
+  background-color: rgb(220, 220, 220);
+}
+.btnCreateTable:active{
+  scale:0.96;
 }
 
 
 .btnPill {
-  padding: 5px 16px;
+  padding: 2px 16px;
   border-radius: 20px;
   border: 2px solid transparent;
-  font-weight: 600;
-  font-size: 12px;
+  font-weight: 400;
+  font-size: 14px;
   cursor: pointer;
   background: #f0f0f0;
   color: #888;
 }
 
 .btnPillStatusActive {
-  background: #4caf50;
+  background: #6be36f;
   color: #fff;
 }
 
 .btnPillStatusDisactive {
-  background: #fe2217;
-  color: #fff;
+  background: var(--soft-gray);
+  color: rgb(82, 81, 81);
 }
 
 .btnPillVipActive {
-  background: #f3e5f5;
-  color: #7b1fa2;
-  border-color: #ce93d8;
+  background: #d010eecf;
+
+  color:white;
 }
 
 .btnPillNormalActive {
-  background: #e8f5e9;
-  color: #388e3c;
-  border-color: #a5d6a7;
+  background:var(--soft-gray);
+  color: #505050;
 }
 
 /* Modal */
@@ -316,15 +322,17 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  backdrop-filter: blur(2px);
 }
 
 .modalBox {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 48px;
   padding: 28px;
-  width: 100%;
+  width: 96%;
   max-width: 440px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border:1px solid white;
 }
 
 .modalHeader {
@@ -335,38 +343,43 @@
 }
 
 .modalTitle {
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 500;
+  font-size:24px;
 }
 
 .modalCloseBtn {
-  background: #fff0f0;
   border: none;
+  opacity: 1;
   border-radius: 50%;
   width: 28px;
   height: 28px;
   cursor: pointer;
-  color: #f44336;
   display: flex;
   align-items: center;
+  scale: 1.6;
   justify-content: center;
 }
 
 .modalFooter {
   display: flex;
   gap: 10px;
-  margin-top: 8px;
+  margin-top:28px;
 }
 
 .btnCancel {
   flex: 1;
   padding: 9px 18px;
   border-radius: 30px;
-  border: 1.5px solid #e8e8e8;
-  background: transparent;
-  font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
+  color:rgb(227, 74, 74);
+  background-color: rgba(255, 0, 0, 0.066);
+}
+.btnCancel:hover{
+  background-color: rgba(255, 0, 0, 0.097);
+}
+.btnCancel:active{
+  scale: 0.96;
 }
 
 .btnDark {
@@ -374,23 +387,38 @@
   padding: 9px 18px;
   border-radius: 30px;
   border: none;
-  background: #1a1a1a;
+  background: oklch(62.3% 0.214 259.815);
   color: #fff;
-  font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   cursor: pointer;
 }
-
+.btnDark:hover{
+  background-color: oklch(60.282% 0.20618 259.145);
+}
+.btnDark:active{
+  scale: 0.96;
+}
 /* Form */
 
+@media (max-width:500px) {
+  .btnDark{
+    padding:9px 8px;
+  }
+  .btnCreateTable{
+    padding:9px 8px;
+  }
+  .modalBox{
+    border-radius: 24px;
+  }
+}
 .formGroup {
   margin-bottom: 16px;
+
 }
 
 .formLabel {
   display: block;
   font-size: 12.5px;
-  font-weight: 600;
   color: #888;
   margin-bottom: 6px;
 }
@@ -398,15 +426,19 @@
 .formInput {
   width: 100%;
   padding: 10px 14px;
-  border-radius: 8px;
-  border: 1.5px solid #e8e8e8;
+  border-radius: 24px;
   font-size: 13.5px;
   outline: none;
-  background: #fafafa;
+  background: var(--soft-gray);
   box-sizing: border-box;
+  
 }
 
 .formRow {
-  display: flex;
+  display: inline-flex;
+  
   gap: 8px;
+    background-color: rgb(244, 242, 242);
+    padding:3px;
+    border-radius: 20px;
 }

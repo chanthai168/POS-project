@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 
 const angleIcon = <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M12 15.121a1 1 0 0 1-.707-.293L7.05 10.586a1 1 0 0 1 1.414-1.414L12 12.707l3.536-3.535a1 1 0 0 1 1.414 1.414l-4.243 4.242a1 1 0 0 1-.707.293"></path></svg>;
 
-const PERIODS = ["Top-selling", "Low-Selling", "Rating"];
+const FILTERS_MODE = ["Top-selling", "Low-Selling", "Rating"];
 
 function SalesRankingCard() {
     const { salesRanking, setSalesRanking } = useAppContext();
@@ -41,7 +41,7 @@ function SalesRankingCard() {
 
                 {open && (
                     <div className="absolute right-0 mt-2 bg-white border border-white rounded-2xl shadow-md overflow-hidden z-10 w-32">
-                        {PERIODS.map(p => (
+                        {FILTERS_MODE.map(p => (
                             <button
                                 key={p}
                                 onClick={() => { 

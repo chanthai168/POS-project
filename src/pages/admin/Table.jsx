@@ -3,6 +3,8 @@ import { useState } from 'react'
 import styles from "../css/table.module.css"
 import { useAppContext } from '../../context/AppProvider'
 
+const angleIcon = <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24"><path fill="currentColor" d="M12 15.121a1 1 0 0 1-.707-.293L7.05 10.586a1 1 0 0 1 1.414-1.414L12 12.707l3.536-3.535a1 1 0 0 1 1.414 1.414l-4.243 4.242a1 1 0 0 1-.707.293"></path></svg>;
+
 // ─────────────────────────────────────────────
 // Constants
 // ─────────────────────────────────────────────
@@ -222,6 +224,7 @@ export default function Table() {
   const {tables,setTables} = useAppContext();
   const [showModal, setShowModal] = useState(false)
   const [filter, setFilter]       = useState('All table')
+  const [open, setOpen] = useState(false);
 
   // Derived counts
   const vipTables      = tables.filter((t) => t.type === 'VIP')
@@ -251,8 +254,10 @@ export default function Table() {
   const filteredTables =
     filter === 'All table'
       ? tables
-      : tables.filter((t) => t.type === filter)
+      : tables.filter((t) => t.type === filter);
 
+  const FILTERS_MODE = ["All table", "VIP", "Normal"];
+  
   return (
     <div className={styles.page} style={{fontFamily: "Manrope"}}>
       <h1 className={styles.pageTitle}>Table Overview</h1>
@@ -285,15 +290,37 @@ export default function Table() {
       <div className={styles.tableCard}>
         <div className={styles.tableCardHeader}>
           <span className={styles.tableCardTitle}>Table list</span>
-          <select
-            className={styles.filterSelect}
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-          >
-            <option>All table</option>
-            <option>VIP</option>
-            <option>Normal</option>
-          </select>
+          
+
+            <div className="relative self-end">
+                <button
+                    onClick={() => setOpen(p => !p)}
+                    className="flex items-center text-sm self-end bg-gray-200 rounded-4xl px-4 py-1.5 gap-1 active:scale-95 transition-transform"
+                >
+                    {filter}
+                    <span className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}>
+                        {angleIcon}
+                    </span>
+                </button>
+
+                {open && (
+                    <div className="absolute right-0 mt-2 bg-white border border-white rounded-2xl shadow-md overflow-hidden z-10 w-32">
+                        {FILTERS_MODE.map(p => (
+                            <button
+                                key={p}
+                                onClick={() => { 
+                                    setFilter(p); 
+                                    setOpen(false); 
+                                }}
+                                className={`w-full text-left px-4 border-b border-gray-200 py-2 text-sm hover:bg-gray-200 transition-colors ${filter === p ? "text-blue-500 font-medium" : "text-gray-700"}`}
+                            >
+                                {p}
+                            </button>
+                        ))}
+                    </div>
+                )}
+            </div>
+
         </div>
 
         <table className={styles.dataTable}>

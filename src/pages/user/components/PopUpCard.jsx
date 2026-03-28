@@ -5,42 +5,38 @@ const plusIcon = <svg xmlns="http://www.w3.org/2000/svg" width={30} height={30} 
 const availableIcon = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M11.707 6.707a1 1 0 0 0-1.414-1.414L7 8.586L5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2"/></svg>;
 const starIcon = <svg xmlns="http://www.w3.org/2000/svg" width={12} height={12} viewBox="0 0 24 24"><path fill="currentColor" d="m8.85 16.825l3.15-1.9l3.15 1.925l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4l-1.45 3.375l-3.65.325l2.775 2.425zM5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275zM12 12.25"></path></svg>;
 
-import { useState } from "react";
-function PopUpCard({Data,handleClick,setIsPurchase,setCart,cart}){
+import { useNavigate } from "react-router-dom";
+function PopUpCard({Data,handleClick,setCart}){
+
+    const navigate = useNavigate();
 
     function handlePaymentGateway(){
+        addItemToCart();
         handleClick(prev=>!prev);
-        setIsPurchase(prev => !prev);
+        navigate("/user/cart");
     }
 
     function addItemToCart(){
 
-        // setCart(prev=>{
-        //     return prev.map(e=>{
-        //         if(e.id == Data.data.id){
-        //             return {...e,quantity:e.quantity + 1};
-        //         }
-        //         e.quantity = 1;
-        //         return e;
-        //     })
-        // })
+        setCart(prev=>{
 
-        const copy = [...cart];
-        
-        const target = copy.find(e => e.id === Data.data.id);
+            const target = prev.find(e => e.id === Data.data.id);
 
-        if(target){
-            target.quantity ++;
-            setCart(copy);
-            
-        }else{
+            if(target){
+                return prev.map(e=>{
+                    if(e.id == Data.data.id){
+                    return {...e,quantity:e.quantity + 1};
+                    }
+                    return e;
+                })
+            }
+
             Data.data.quantity = 1;
-            copy.push(Data.data);
-            setCart(copy);
-        }
-        
-        handleClick(prev=>!prev);
-        
+
+            return [...prev,Data.data];
+        })
+
+        handleClick(prev=>!prev);  
     }
 
     return(
@@ -90,11 +86,11 @@ function PopUpCard({Data,handleClick,setIsPurchase,setCart,cart}){
                     
                     <div className="flex flex-col justify-end gap-2">
                         <button onClick={e=>{handleClick(prev=>!prev)}}
-                        className="bg-gray-300 text-red-600 rounded-4xl px-8 py-2  active:scale-105">Cancell</button>
+                        className="bg-gray-300 text-red-600 rounded-4xl px-8 py-2  active:scale-95">Cancel</button>
                         <button onClick={addItemToCart}
-                        className="bg-gray-300 rounded-4xl px-8 py-2   active:scale-105">Add to Cart</button>
+                        className="bg-gray-300 rounded-4xl px-8 py-2   active:scale-95">Add to Cart</button>
                         <button onClick={handlePaymentGateway}
-                        className="bg-blue-500 text-gray-200 rounded-4xl px-8 py-2 hover:bg-blue-600 active:scale-105">Purchase Now</button>
+                        className="bg-blue-500 text-gray-200 rounded-4xl px-8 py-2 hover:bg-blue-600 active:scale-95">Order Now</button>
                     </div>
                 </div>
 

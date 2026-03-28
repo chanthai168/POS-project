@@ -5,7 +5,6 @@ import PopUpCard from "./PopUpCard";
 import PaymentLoadingModal from "./PaymentLoadingModel";
 function Card(Data){
     const [isClick,setIsClick] = useState(false);
-    const [isPurchase,setIsPurchase] = useState(false);
 
     function handleClick(){
        setIsClick(prev=> !prev);
@@ -50,12 +49,9 @@ function Card(Data){
         </div>
 
         {isClick &&(
-            <PopUpCard Data={Data}  handleClick={handleClick} setIsPurchase={setIsPurchase} setCart={Data.setCart} cart={Data.cart}/>
+            <PopUpCard Data={Data}  handleClick={handleClick}  setCart={Data.setCart} cart={Data.cart}/>
         )}
 
-        {isPurchase && (
-            <PaymentLoadingModal isPurchase={isPurchase} setIsPurchase={setIsPurchase}/>
-        )}
         </>
     )
 }

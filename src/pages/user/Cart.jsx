@@ -11,9 +11,8 @@ import Checkout from "./components/Checkout";
 import PaymentLoadingModal from "./components/PaymentLoadingModel";
 
 function Cart() {
-  const { cart, setCart } = useAppContext();
-  const {salesRanking,setSalesRanking} = useAppContext();
-  const {order,setOrder} = useAppContext();
+  const {cart, setCart } = useAppContext();
+  const {order,setOrder,setTables,setSalesRanking} = useAppContext();
   
   const [lenCart,setLenCart] = useState(cart.length);
   const [payMethod, setPayMethod] = useState("QR");
@@ -31,9 +30,6 @@ function Cart() {
   if(lenCart == 0) discount = 0;
   let total = subTotal - discount;
 
-
-
-
   function handleCheckout(){
 
     if(lenCart == 0){
@@ -41,10 +37,9 @@ function Cart() {
       return;
     }
 
+    
 
-    setIsCheckout(true);
 
-    // construct order object then push it into order(array of object for update state) via setorder
     const orderItem = {
       orderId:order.length,
       subTotal,
@@ -60,15 +55,22 @@ function Cart() {
       },
       items:cart,
     }
-
     setOrder(prev=> [...prev,orderItem]);
-
-    setCart([]);
-
+    
+    setTables(prev=>{
+      return prev.map(e=>{
+        if(e.number === tableNumber){
+          return {...e,status:true}
+        }
+        return e;
+      })
+    })
     updateSalesRanking();
+    setCart([]);
+    
+    setIsCheckout(true);
   }
 
-  console.log(order);
 
     function updateSalesRanking() {
       setSalesRanking((prev) => {
@@ -94,23 +96,6 @@ function Cart() {
   useEffect(()=>{
     setLenCart(cart.length);
   },[cart])
-
-    //   {
-  //   orderId: 1,
-  //   tableNumber: 2,
-  //   guest: 1,
-  //   subTotal: 96,
-  //   discount: 20,
-  //   minAgo: 5,
-  //   date: new Date().toDateString(),
-  //   timeInTheDay: "8am",
-  //   status: "pending", // pending, accepted, preparing, serving
-  //   items: [
-  //     { foodName: "Espresso", image: "/images/sea-food.jpg", quantity: 2, basePrice: 25 },
-  //     { foodName: "Croissant", image: "/images/sea-food.jpg", quantity: 2, basePrice: 18 },
-  //     { foodName: "Orange Juice", image: "/images/sea-food.jpg", quantity: 1, basePrice: 20 },
-  //   ],
-  // },
 
 
 

@@ -5,8 +5,6 @@ import foods from "./../../../public/foods.json";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import PopUpCard from "./components/PopUpCard";
-import PaymentLoadingModal from "./components/PaymentLoadingModel";
 import { useAppContext } from "../../context/AppProvider";
 
 
