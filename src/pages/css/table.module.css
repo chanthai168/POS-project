@@ -442,3 +442,14 @@
     padding:3px;
     border-radius: 20px;
 }
+/* Validation error styles */
+.formInputError {
+  border: 1.5px solid #f44336;
+  background: #fff5f5;
+}
+
+.errorText {
+  color: #f44336;
+  font-size: 11.5px;
+  margin-top: 4px;
+}

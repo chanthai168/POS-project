@@ -1,33 +1,62 @@
-
 import { createContext, useContext, useState } from 'react';
 import datas from "../../public/foods.json";
+import INITIAL_TABLES from "../../public/tables.json";
 
 const AppContext = createContext();
 
-const INITIAL_TABLES = [
-  { id: 1, number: 1, capacity: 4, status: true,  type: 'VIP',    color: 'circleRed'    },
-  { id: 2, number: 2, capacity: 4, status: true,  type: 'VIP',    color: 'circlePink'   },
-  { id: 3, number: 3, capacity: 4, status: true,  type: 'VIP',    color: 'circleYellow' },
-  { id: 4, number: 4, capacity: 4, status: false, type: 'VIP',    color: 'circleBlue'   },
-  { id: 5, number: 5, capacity: 4, status: false, type: 'Normal', color: 'circleNavy'   },
-  { id: 6, number: 6, capacity: 6, status: true,  type: 'Normal', color: 'circleGreen'  },
-  { id: 7, number: 7, capacity: 2, status: false, type: 'Normal', color: 'circlePurple' },
-]
+// Helper to load from localStorage, falls back to default if nothing saved yet
+function loadFromStorage(key, fallback) {
+  try {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+// Helper to save to localStorage
+function saveToStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    console.error("Failed to save to localStorage");
+  }
+}
 
 export function AppProvider({ children }) {
 
-  const [cart,setCart] = useState([]);
-  
-  const [order,setOrder] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  const [tables,setTables] = useState(INITIAL_TABLES);
+  // Load orders from localStorage on startup, empty array if nothing saved
+  const [order, setOrderState] = useState(() => loadFromStorage("pos_orders", []));
 
-  const addQuantityData = datas.map(data=> {
-    data.quantity=1;
+  // Load tables from localStorage on startup, falls back to tables.json
+  const [tables, setTablesState] = useState(() => loadFromStorage("pos_tables", INITIAL_TABLES));
+
+  const addQuantityData = datas.map(data => {
+    data.quantity = 1;
     return data;
   });
 
-  const [salesRanking,setSalesRanking] = useState(addQuantityData);
+  const [salesRanking, setSalesRanking] = useState(addQuantityData);
+
+  // Wrap setOrder to also save to localStorage
+  const setOrder = (updater) => {
+    setOrderState(prev => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      saveToStorage("pos_orders", next);
+      return next;
+    });
+  };
+
+  // Wrap setTables to also save to localStorage
+  const setTables = (updater) => {
+    setTablesState(prev => {
+      const next = typeof updater === "function" ? updater(prev) : updater;
+      saveToStorage("pos_tables", next);
+      return next;
+    });
+  };
 
   const value = {
     cart,
@@ -47,7 +76,6 @@ export function AppProvider({ children }) {
   );
 }
 
-// Custom hook (very convenient)
 export const useAppContext = () => {
   const context = useContext(AppContext);
   if (!context) {
